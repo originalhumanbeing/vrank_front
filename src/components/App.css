@@ -31,3 +31,35 @@ body {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+header {
+  position: relative;
+  margin: 10px;
+}
+
+.main-logo {
+  position: absolute;
+  top: 15px;
+  left: 10px;
+  background: indianred;
+  width: 80px;
+  height: 50px;
+  margin-left: 75px;
+  vertical-align: middle;
+}
+
+.nav-list {
+  padding: 0 20px 0 20px;
+}
+
+.nav-list, .nav-item {
+  list-style: none;
+  display: inline-block;
+}
+
+.nav-item a {
+  text-decoration: none;
+  color: aliceblue;
+  display: inline-block;
+  padding: 20px;
+}

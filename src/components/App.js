@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom'
-import logo from '../logo.svg';
 import Home from './home/Home'
 import About from './About'
 
@@ -11,12 +10,14 @@ class App extends Component {
     return (
       <div className="App">
         <header>
-            <div>
-                <ul>
-                    <li><Link to="/">Home</Link></li>
-                    <li><Link to="/about">About</Link></li>
+            <div className="main-logo">LOGO!!!!</div>
+            <div className="nav">
+                <ul className="nav-list">
+                    <li className="nav-item"><Link to="/">Home</Link></li>
+                    <li className="nav-item"><Link to="/about">평가하기</Link></li>
+                    <li className="nav-item"><Link to="/search">검색하기</Link></li>
+                    <li className="nav-item"><Link to="/user">가입/로그인</Link></li>
                 </ul>
-                <hr/>
             </div>
         </header>
         <main>
