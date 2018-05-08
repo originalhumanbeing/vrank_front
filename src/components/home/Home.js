@@ -10,7 +10,8 @@ const varietyShowCategories = [
         items: [
             {
                 title: "신서유기",
-                src: "/test_images/sinseoyugi.jpg"
+                src: "/test_images/sinseoyugi.jpg",
+                episodes: [{}]
             },
             {
                 title: "정글의 법칙",
@@ -110,12 +111,20 @@ class Home extends Component {
     onClickVarietyShowElement = (cate_idx, show_idx) => {
         return () => {
             let visibleEpiBlockFlags = this.state.visibleEpiBlockFlags;
+            visibleEpiBlockFlags = visibleEpiBlockFlags.map((el) => false)
             visibleEpiBlockFlags[cate_idx] = true;
+
             //cate_idx가 들어가는 이유: 어떤 쇼를 택하든 밑에 박스가 나오는 것은 동일
             //그 박스 안에 들어가는 내용만 바꿔서 렌더링 해주면 되니까 꼭 show_idx를 전달하지 않아도 됌
             this.setState({'visibleEpiBlockFlags': visibleEpiBlockFlags});
             console.log(cate_idx, show_idx, this.state.visibleEpiBlockFlags)
         }
+    }
+
+    onClickCloseBtn = () => {
+        let visibleEpiBlockFlags = this.state.visibleEpiBlockFlags;
+        visibleEpiBlockFlags = visibleEpiBlockFlags.map((el) => false);
+        this.setState({'visibleEpiBlockFlags': visibleEpiBlockFlags});
     };
 
     render() {
@@ -130,10 +139,10 @@ class Home extends Component {
                             <h3>{cate.title}</h3>
                             <GridList cellHeight={280} cols={2.2} key={idx}
                                       style={styles.gridList}>
-                                {cate.items.map((cate, cate_idx, cate_src) =>
-                                    <GridTile key={cate_idx} title={cate.title}
-                                              onClick={this.onClickVarietyShowElement(idx, cate_idx)}>
-                                        <img src={cate.src} alt=""/>
+                                {cate.items.map((show, show_idx) =>
+                                    <GridTile key={show_idx} title={show.title}
+                                              onClick={this.onClickVarietyShowElement(idx, show_idx)}>
+                                        <img src={show.src} alt=""/>
                                     </GridTile>
                                 )}
                             </GridList>
@@ -143,6 +152,7 @@ class Home extends Component {
                                     <GridList cellHeight={280} cols={2.2} key={1} style={styles.gridList}>
                                         <GridTile>episode here!</GridTile>
                                     </GridList>
+                                    <button onClick={this.onClickCloseBtn}>X</button>
                                 </div> : ''}
                         </div>
                     )}
