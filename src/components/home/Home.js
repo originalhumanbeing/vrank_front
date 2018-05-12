@@ -16,23 +16,29 @@ const varietyShowCategories = [
         items: [
             {
                 title: "신서유기",
-                src: "/test_images/sinseoyugi.jpg"
+                src: "/test_images/sinseoyugi.jpg",
+                ratio: 4.9
+
             },
             {
                 title: "정글의 법칙",
-                src: "/test_images/jungle.jpg"
+                src: "/test_images/jungle.jpg",
+                ratio: 3.5
             },
             {
                 title: "배틀트립",
-                src: "/test_images/battletrip.jpg"
+                src: "/test_images/battletrip.jpg",
+                ratio: 3.8
             },
             {
                 title: "1박 2일",
-                src: "/test_images/2nights1day.jpg"
+                src: "/test_images/2nights1day.jpg",
+                ratio: 4.2
             },
             {
                 title: "뭉쳐야 뜬다",
-                src: "/test_images/mungcheoyaddunda.jpg"
+                src: "/test_images/mungcheoyaddunda.jpg",
+                ratio: 3.4
             }
         ]
     },
@@ -41,11 +47,13 @@ const varietyShowCategories = [
         items: [
             {
                 title: "나 혼자 산다",
-                src: "/test_images/nahonjasanda.jpg"
+                src: "/test_images/nahonjasanda.jpg",
+                ratio: 3.4
             },
             {
                 title: "효리네 민박 2",
                 src: "/test_images/hyorineminbak.jpg",
+                ratio: 3.7,
                 desc : `소복하게 쌓인 눈과 함께한 겨울을 지나 따뜻한 햇살과 봄꽃들이 가득한 제주의 봄을 입은 “효리네 민박”
 
 언제나 그랬듯, 이효리 부부가 차려주는 따뜻한 아침 식사와 포근한 잠자리가 제공되는 곳.
@@ -69,15 +77,18 @@ const varietyShowCategories = [
             },
             {
                 title: "전지적 참견 시점",
-                src: "/test_images/jeonjijeokchamgeon.jpg"
+                src: "/test_images/jeonjijeokchamgeon.jpg",
+                ratio: 2.1
             },
             {
                 title: "이불 밖은 위험해",
-                src: "/test_images/ebulbakeunwiheomhae.jpg"
+                src: "/test_images/ebulbakeunwiheomhae.jpg",
+                ratio: 3.9
             },
             {
                 title: "냉장고를 부탁해",
-                src: "/test_images/nangjanggo.jpg"
+                src: "/test_images/nangjanggo.jpg",
+                ratio: 3.1
             }
         ]
     },
@@ -86,19 +97,23 @@ const varietyShowCategories = [
         items: [
             {
                 title: "복면가왕",
-                src: "/test_images/bokmyeongawang.jpg"
+                src: "/test_images/bokmyeongawang.jpg",
+                ratio: 3.2
             },
             {
                 title: "M COUNT DOWN",
-                src: "/test_images/mcountdown.jpg"
+                src: "/test_images/mcountdown.jpg",
+                ratio: 3.8
             },
             {
                 title: "주간아이돌",
-                src: "/test_images/weeklyidol.jpg"
+                src: "/test_images/weeklyidol.jpg",
+                ratio: 3.4
             },
             {
                 title: "투유 프로젝트 - 슈가맨2",
-                src: "/test_images/toyouproject.jpg"
+                src: "/test_images/toyouproject.jpg",
+                ratio: 3.1
             }
         ]
     },
@@ -179,12 +194,15 @@ class Home extends Component {
                     {varietyShowCategories.map((cate, idx) =>
                         <div style={styles.root}>
                             <h3>{cate.title}</h3>
-                            <GridList cellHeight={280} cols={2.2} key={`cate_${idx}`}
+                            <GridList cellHeight={240} cols={2.2} key={`cate_${idx}`}
                                       style={styles.gridList}>
                                 {cate.items.map((show, show_idx) =>
                                     <GridTile key={`show_${idx}_${show_idx}`} title={show.title} style={{cursor: 'pointer'}}
-                                              onClick={this.onClickVarietyShowElement(idx, show_idx)}>
-                                        <img src={show.src} alt=""/>
+                                              onClick={this.onClickVarietyShowElement(idx, show_idx)}
+                                              subtitle={<StarRatings starRatedColor={'rgb(255, 180, 0)'} starDimension="15px" numberOfStars={5}
+                                                     starSpacing="0"
+                                                     rating={show.ratio}/>}>
+                                            <img src={show.src} alt=""/>
                                     </GridTile>
                                 )}
                             </GridList>

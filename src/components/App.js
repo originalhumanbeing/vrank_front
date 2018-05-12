@@ -9,7 +9,7 @@ class App extends Component {
     return (
       <div className="App">
         <header>
-            <div className="main-logo">LOGO!!!!</div>
+            <div className="main-logo">VRANK</div>
             <div className="nav">
                 <ul className="nav-list">
                     <li className="nav-item"><Link to="/">Home</Link></li>
